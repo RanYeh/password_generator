@@ -1,6 +1,7 @@
 //-- Include packages & define related varibles
 const express = require('express')
 const exphbs = require('express-handlebars')
+const generatePassword = require('./generate_password')
 
 const app = express()
 
@@ -17,8 +18,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body)
-  res.render('index')
+  const password = generatePassword(req.body)
+  res.render('index', { password })
 })
 
 //-- Start and listen on the express server
