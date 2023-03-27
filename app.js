@@ -17,9 +17,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.post('/', (req, res) => {
-  const password = generatePassword(req.body)
-  res.render('index', { password })
+app.post('/password', (req, res) => {
+  const options = req.body
+  const password = generatePassword(options)
+  res.render('index', { password, options })
 })
 
 //-- Start and listen on the express server
